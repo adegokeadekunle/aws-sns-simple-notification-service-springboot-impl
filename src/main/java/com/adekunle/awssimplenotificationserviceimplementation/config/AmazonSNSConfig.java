@@ -22,9 +22,8 @@ public class AmazonSNSConfig {
     public AmazonSNSClient amazonSNSClient(){
         return (AmazonSNSClient)AmazonSNSClientBuilder
                 .standard()
-                .withRegion(Regions.US_GOV_EAST_1)
-                .withCredentials( new AWSStaticCredentialsProvider(new BasicAWSCredentials(
-                        accessKey,secretKey
-                ))).build();
+                .withRegion(Regions.US_GOV_EAST_1)  // region chosen on sns
+                .withCredentials( new AWSStaticCredentialsProvider(new BasicAWSCredentials(accessKey,secretKey)))
+                .build();
     }
 }

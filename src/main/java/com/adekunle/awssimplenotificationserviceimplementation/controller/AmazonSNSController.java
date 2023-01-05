@@ -15,7 +15,7 @@ public class AmazonSNSController {
     
     private final AmazonSNSClient amazonSNSClient;
 
-    private String TOPIC_ARN = ""; //TOPIC_ARN gotten from the Amazon SNS
+    private final String TOPIC_ARN = " "; //TOPIC_ARN gotten from the Amazon SNS
 
     @GetMapping("/subscribe/{email}")
     public String subscribeToSNSTopic(@PathVariable("email")String email){
@@ -27,7 +27,7 @@ public class AmazonSNSController {
 
     @GetMapping("/publish/{message}")
     public String publishToSNSTopic(@PathVariable("message") String message){
-        PublishRequest publishRequest = new PublishRequest(TOPIC_ARN, "SNS message in springboot");
+        PublishRequest publishRequest = new PublishRequest(TOPIC_ARN, message);
         amazonSNSClient.publish(publishRequest);
 
         return "message published";
